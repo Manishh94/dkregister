@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<% if params[:recent] == 'true' %>
+  <%= I18n.t('new_inviation_url') %> <%= user_url(@user.invitation_code)  %>
+<% else %>
+  <%= form_for(@new_user, url: users_path(:user), method: :post) do |f| %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :phone %><br />
+      <%= f.text_field :phone %>
+    </div>
+
+    <div class="field">
+      <%= f.label "full name" %><br />
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :invitation_code, value: params[:id] %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Submit" %>
+    </div>
+  <% end %>
+<% end %>
