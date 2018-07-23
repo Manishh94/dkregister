@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <% if params[:recent] == 'true' %>
   <%= I18n.t('new_inviation_url') %> <%= user_url(@user.invitation_code)  %>
 <% else %>
